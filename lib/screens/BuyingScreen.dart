@@ -6,7 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:whatsapp_unilink/whatsapp_unilink.dart';
 
-import 'constants.dart';
+import '../constants.dart';
 
 
 class BuyingScreen extends StatefulWidget {
