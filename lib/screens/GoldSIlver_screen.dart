@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:gold_app/info.dart';
-import 'package:gold_app/loading_screen.dart';
+import 'package:gold_app/screens/info_screen.dart';
+import 'package:gold_app/screens/loading_screen.dart';
 import 'package:intl/intl.dart';
-import 'components.dart';
+import 'package:gold_app/components.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'constants.dart';
 
 
 class GoldSilverScreen extends StatefulWidget {
@@ -40,6 +42,9 @@ class _GoldSilverScreenState extends State<GoldSilverScreen> with TickerProvider
     animationController =
     new AnimationController(vsync: this, duration: Duration(milliseconds: 500));
     animationController.repeat(reverse: true);
+
+    ///number of coins available
+
     oneSilver=widget.map['OneSilver'];
     twoSilver=widget.map['TwoSilver'];
     fiveSilver=widget.map['FiveSilver'];
@@ -51,7 +56,7 @@ class _GoldSilverScreenState extends State<GoldSilverScreen> with TickerProvider
     super.initState();
   }
 
-
+  ///Rate of each coin
   late String oneGramGold=formatter.format(rateGold);
   late String twoGramGold=formatter.format(rateGold*2);
   late String fiveGramGold=formatter.format(rateGold*5);
@@ -100,20 +105,7 @@ class _GoldSilverScreenState extends State<GoldSilverScreen> with TickerProvider
               padding: EdgeInsets.zero,
               scrollDirection: Axis.vertical,
               children: [
-                Align(
-                  alignment: Alignment(0.9, 0),
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 20,right: 3),
-                    child: Text(
-                      'Refresh',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                ),
+                goldPageWidgets[0],
                 Align(
                   alignment: Alignment(1, 0),
                   child: Padding(
@@ -138,21 +130,7 @@ class _GoldSilverScreenState extends State<GoldSilverScreen> with TickerProvider
 
                   ),
                 ),
-                Align(
-                  alignment: Alignment(0, 0),
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                    child: Text(
-                      'GOLD COINS',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        color: Color(0xFFEBC480),
-                        fontSize: 30,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
+                goldPageWidgets[1],
                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                   child: Card(
@@ -238,21 +216,7 @@ class _GoldSilverScreenState extends State<GoldSilverScreen> with TickerProvider
                     ),
                   ),
                 ),
-                Align(
-                  alignment: Alignment(0, 0),
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
-                    child: Text(
-                      'Types of Coins',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        color: Color(0xFFEBC480),
-                        fontSize: 30,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
+                goldPageWidgets[2],
                 CoinCardGold(coinWeight: 1,coinLeft: oneGold,price: oneGramGold),
                 CoinCardGold(coinWeight: 2,coinLeft: twoGold,price: twoGramGold),
                 CoinCardGold(coinWeight: 5,coinLeft: fiveGold,price: fiveGramGold),
@@ -264,20 +228,7 @@ class _GoldSilverScreenState extends State<GoldSilverScreen> with TickerProvider
               padding: EdgeInsets.zero,
               scrollDirection: Axis.vertical,
               children: [
-                Align(
-                  alignment: Alignment(0.9, 0),
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 20,right: 3),
-                    child: Text(
-                      'Refresh',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                ),
+                silverPageWidgets[0],
                 Align(
                   alignment: Alignment(1, 0),
                   child: Padding(
@@ -302,21 +253,7 @@ class _GoldSilverScreenState extends State<GoldSilverScreen> with TickerProvider
 
                   ),
                 ),
-                Align(
-                  alignment: Alignment(0, 0),
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                    child: Text(
-                      'SILVER COINS',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        color: Color(0xFFE6E0E5),
-                        fontSize: 30,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
+                silverPageWidgets[1],
                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                   child: Card(
@@ -402,21 +339,7 @@ class _GoldSilverScreenState extends State<GoldSilverScreen> with TickerProvider
                     ),
                   ),
                 ),
-                Align(
-                  alignment: Alignment(0, 0),
-                  child: Padding(
-                    padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
-                    child: Text(
-                      'Types of Coins',
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        color: Color(0xFFE6E0E5),
-                        fontSize: 30,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ),
+                silverPageWidgets[2],
                 CoinCardSilver(coinWeight: 1,coinLeft: oneSilver,price: rateSilver.toString()),
                 CoinCardSilver(coinWeight: 2,coinLeft: twoSilver,price: twoGramSilver),
                 CoinCardSilver(coinWeight: 5,coinLeft: fiveSilver,price: fiveGramSilver),
