@@ -35,7 +35,6 @@ class InfoScreen extends StatelessWidget {
             infoPageWidgets[0],
             infoPageWidgets[1],
             infoPageWidgets[2],
-            infoPageWidgets[3],
             Padding(
               padding: EdgeInsets.fromLTRB(0, 40, 0, 0),
               child: TextButton(
@@ -154,9 +153,9 @@ class InfoScreen extends StatelessWidget {
                 ),
               ),
             ),
+            infoPageWidgets[3],
             infoPageWidgets[4],
             infoPageWidgets[5],
-            infoPageWidgets[6]
           ],
         ),
       ),
