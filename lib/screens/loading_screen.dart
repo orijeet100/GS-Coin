@@ -13,7 +13,7 @@ class LoadingScreen extends StatefulWidget {
 
 class _LoadingScreenState extends State<LoadingScreen> {
 
-  ///ayooo
+
   late int oneSilver;
   late int twoSilver;
   late int fiveSilver;
